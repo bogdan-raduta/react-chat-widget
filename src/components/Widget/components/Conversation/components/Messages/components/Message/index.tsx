@@ -24,9 +24,10 @@ function Message({ message, showTimeStamp }: Props) {
     .use(markdownItSanitizer)
     .use(markdownItLinkAttributes, { attrs: { target: '_blank', rel: 'noopener' } })
     .render(message.text);
-
+    console.log('sanitizedHTML',sanitizedHTML);
   return (
     <div className={`rcw-${message.sender}`}>
+      
       <div className="rcw-message-text" dangerouslySetInnerHTML={{ __html: sanitizedHTML }} />
       {showTimeStamp && <span className="rcw-timestamp">{format(message.timestamp, 'hh:mm')}</span>}
     </div>
