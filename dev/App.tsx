@@ -27,6 +27,9 @@ export default class App extends Component {
     addResponseMessage('Selected ' + e);
     setQuickButtons([]);
   }
+  handleLauncher = (value) => {
+    console.log('clicked', value);
+  }
 
   handleSubmit = (msgText: string) => {
     if(msgText.length < 80) {
@@ -44,6 +47,7 @@ export default class App extends Component {
           title="Bienvenido"
           subtitle="Asistente virtual"
           senderPlaceHolder="Escribe aquí ..."
+          handleLauncherClicked={this.handleLauncher}
           handleNewUserMessage={this.handleNewUserMessage}
           handleQuickButtonClicked={this.handleQuickButtonClicked}
           imagePreview

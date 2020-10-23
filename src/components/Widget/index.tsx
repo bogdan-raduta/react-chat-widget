@@ -1,8 +1,9 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { toggleChat, addUserMessage } from '../../store/actions';
 import { AnyFunction } from '../../utils/types';
+import { GlobalState } from '../../store/types';
 
 import WidgetLayout from './layout';
 
@@ -17,6 +18,7 @@ type Props = {
   autofocus: boolean;
   customLauncher?: AnyFunction;
   handleNewUserMessage: AnyFunction;
+  handleLauncherClicked?: AnyFunction;
   handleQuickButtonClicked?: AnyFunction;
   handleTextInputChange?: (event: any) => void;
   chatId: string;
@@ -40,6 +42,7 @@ function Widget({
   autofocus,
   customLauncher,
   handleNewUserMessage,
+  handleLauncherClicked,
   handleQuickButtonClicked,
   handleTextInputChange,
   chatId,
@@ -52,9 +55,14 @@ function Widget({
   handleSubmit
 }: Props) {
   const dispatch = useDispatch();
+  const { showChat } = useSelector((state: GlobalState) => ({
+    showChat: state.behavior.showChat,
+  }));
 
   const toggleConversation = () => {
+    handleLauncherClicked?.(!showChat);
     dispatch(toggleChat());
+    
   }
 
   const handleMessageSubmit = (event) => {

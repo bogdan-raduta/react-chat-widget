@@ -24,7 +24,7 @@ function Message({ message, showTimeStamp }: Props) {
     .use(markdownItSanitizer)
     .use(markdownItLinkAttributes, { attrs: { target: '_blank', rel: 'noopener' } })
     .render(message.text);
-    console.log('sanitizedHTML',sanitizedHTML);
+    //console.log('sanitizedHTML',sanitizedHTML);
   return (
     <div className={`rcw-${message.sender}`}>
       
