@@ -8,6 +8,7 @@
   "license": "MIT",
   "types": "./lib/index.d.ts",
   "scripts": {
+    "prepare": "npm run build",
     "start": "webpack-dev-server --config webpack.config.dev.js",
     "build": "webpack --config ./webpack.config.prod.js",
     "test": "jest --coverage"
