@@ -47,6 +47,24 @@
   }
 }
 
+@include keyframes(scale-up) {
+  from  {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.5);
+  }
+}
+
+@include keyframes(scale-down) {
+  from  {
+    transform: scale(1.5);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
 @include keyframes(slide-in) {
   from {
     opacity: 0;
